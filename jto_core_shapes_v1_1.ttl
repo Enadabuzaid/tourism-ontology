@@ -1,0 +1,115 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix jto: <http://www.jordantourism.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+#################################################
+# JTO SHACL SHAPES (v1.1)
+# - Core data quality rules that match the current OWL model
+# - Time/Geo advanced shapes are included but deactivated until you model them in OWL
+#################################################
+
+############################
+# Shape 1: Tourism Entity core requirements
+############################
+jto:TourismEntityCoreShape
+    a sh:NodeShape ;
+    sh:targetClass jto:TourismEntity ;
+
+    # Multilingual official name
+    sh:property [
+        sh:path jto:officialName ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:message "Every TourismEntity must have at least one officialName with a language tag (e.g., @en, @ar)." ;
+    ] ;
+
+    # Latitude / Longitude are used in your OWL today
+    sh:property [
+        sh:path jto:latitude ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive -90 ;
+        sh:maxInclusive 90 ;
+        sh:message "TourismEntity must have latitude as xsd:decimal between -90 and 90." ;
+    ] ;
+
+    sh:property [
+        sh:path jto:longitude ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive -180 ;
+        sh:maxInclusive 180 ;
+        sh:message "TourismEntity must have longitude as xsd:decimal between -180 and 180." ;
+    ] .
+
+############################
+# Shape 2: Optional bilingual labels (nice-to-have)
+############################
+jto:BilingualLabelsShape
+    a sh:NodeShape ;
+    sh:targetClass jto:TourismEntity ;
+    sh:severity sh:Warning ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "(Warning) Add rdfs:label for better UI/search." ;
+    ] .
+
+#################################################
+# TIME SHAPES (OWL-Time) - Deactivated for now
+# Activate later when you add time:Interval modeling in OWL
+#################################################
+
+jto:OpeningTimeShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    sh:targetClass jto:TourismEntity ;
+    sh:property [
+        sh:path jto:openingInterval ;
+        sh:class time:Interval ;
+        sh:message "OpeningInterval must be a time:Interval." ;
+    ] .
+
+jto:TimeIntervalShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    sh:targetClass time:Interval ;
+    sh:property [
+        sh:path time:hasBeginning ;
+        sh:minCount 1 ;
+        sh:message "Time interval must have beginning." ;
+    ] ;
+    sh:property [
+        sh:path time:hasEnd ;
+        sh:minCount 1 ;
+        sh:message "Time interval must have end." ;
+    ] .
+
+#################################################
+# GEO SHAPES (GeoSPARQL) - Deactivated for now
+# Activate later when you model geo:hasGeometry / geo:asWKT in OWL
+#################################################
+
+jto:GeoFeatureShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    sh:targetClass geo:Feature ;
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:message "Geo Feature must have geometry." ;
+    ] .
+
+jto:GeometryShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    sh:targetClass geo:Geometry ;
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:datatype geo:wktLiteral ;
+        sh:message "Geometry must be expressed as WKT." ;
+    ] .

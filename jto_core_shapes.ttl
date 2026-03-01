@@ -1,0 +1,111 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix jto: <http://www.semanticweb.org/enadabuzaid/ontologies/jto#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+#################################################
+# CORE VALIDATION SHAPES
+#################################################
+
+############################
+# Shape 1: Tourism Entity
+############################
+jto:TourismEntityShape
+    a sh:NodeShape ;
+    sh:targetClass jto:TourismEntity ;
+
+    sh:property [
+        sh:path jto:officialName ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:message "Every tourism entity must have at least one official name with a language tag." ;
+    ] ;
+
+    sh:property [
+        sh:path jto:hasLocation ;
+        sh:minCount 1 ;
+        sh:message "Every tourism entity must have a location." ;
+    ] .
+
+############################
+# Shape 2: Accommodation
+############################
+jto:AccommodationShape
+    a sh:NodeShape ;
+    sh:targetClass jto:Accommodation ;
+
+    sh:property [
+        sh:path jto:hasStarRating ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 5 ;
+        sh:message "Accommodation star rating must be between 1 and 5." ;
+    ] .
+
+#################################################
+# TIME VALIDATION (OWL-Time)
+#################################################
+
+############################
+# Shape 3: Opening Interval
+############################
+jto:OpeningIntervalShape
+    a sh:NodeShape ;
+    sh:targetClass jto:TourismEntity ;
+
+    sh:property [
+        sh:path jto:openingInterval ;
+        sh:class time:Interval ;
+        sh:message "Opening interval must be a valid time:Interval." ;
+    ] .
+
+############################
+# Shape 4: Time Interval Structure
+############################
+jto:TimeIntervalShape
+    a sh:NodeShape ;
+    sh:targetClass time:Interval ;
+
+    sh:property [
+        sh:path time:hasBeginning ;
+        sh:minCount 1 ;
+        sh:message "Time interval must have a beginning time." ;
+    ] ;
+
+    sh:property [
+        sh:path time:hasEnd ;
+        sh:minCount 1 ;
+        sh:message "Time interval must have an end time." ;
+    ] .
+
+#################################################
+# GEO VALIDATION (GeoSPARQL)
+#################################################
+
+############################
+# Shape 5: Geo Location
+############################
+jto:GeoLocationShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf jto:hasLocation ;
+
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:message "Each location must have an associated geometry." ;
+    ] .
+
+############################
+# Shape 6: Geometry
+############################
+jto:GeometryShape
+    a sh:NodeShape ;
+    sh:targetClass geo:Geometry ;
+
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:datatype geo:wktLiteral ;
+        sh:message "Geometry must be represented using WKT format." ;
+    ] .
