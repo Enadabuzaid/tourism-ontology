@@ -7,34 +7,41 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 
 #################################################
-# JTO SHACL SHAPES (v1.1)
-# - Core data quality rules that match the current OWL model
-# - Time/Geo advanced shapes are included but deactivated until you model them in OWL
+# JTO SHACL SHAPES (v1.1 - revised 2026-03-06)
+# - lat/lon requirement scoped to jto:Place only (not all TourismEntity)
+# - officialName required for all TourismEntity instances
+# - Time/Geo advanced shapes deactivated until modeled in OWL
 #################################################
 
 ############################
-# Shape 1: Tourism Entity core requirements
+# Shape 1: TourismEntity core — officialName required for ALL entities
 ############################
 jto:TourismEntityCoreShape
     a sh:NodeShape ;
     sh:targetClass jto:TourismEntity ;
 
-    # Multilingual official name
     sh:property [
         sh:path jto:officialName ;
         sh:minCount 1 ;
         sh:datatype rdf:langString ;
         sh:message "Every TourismEntity must have at least one officialName with a language tag (e.g., @en, @ar)." ;
-    ] ;
+    ] .
 
-    # Latitude / Longitude are used in your OWL today
+############################
+# Shape 2: Place core — lat/lon required only for physical Place instances
+# Non-spatial entities (Phrases, Policies, Insurance, etc.) are exempt.
+############################
+jto:PlaceCoreShape
+    a sh:NodeShape ;
+    sh:targetClass jto:Place ;
+
     sh:property [
         sh:path jto:latitude ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:minInclusive -90 ;
         sh:maxInclusive 90 ;
-        sh:message "TourismEntity must have latitude as xsd:decimal between -90 and 90." ;
+        sh:message "Place must have latitude as xsd:decimal between -90 and 90." ;
     ] ;
 
     sh:property [
@@ -43,11 +50,11 @@ jto:TourismEntityCoreShape
         sh:datatype xsd:decimal ;
         sh:minInclusive -180 ;
         sh:maxInclusive 180 ;
-        sh:message "TourismEntity must have longitude as xsd:decimal between -180 and 180." ;
+        sh:message "Place must have longitude as xsd:decimal between -180 and 180." ;
     ] .
 
 ############################
-# Shape 2: Optional bilingual labels (nice-to-have)
+# Shape 3: Bilingual labels — warning (nice-to-have)
 ############################
 jto:BilingualLabelsShape
     a sh:NodeShape ;
@@ -60,8 +67,7 @@ jto:BilingualLabelsShape
     ] .
 
 #################################################
-# TIME SHAPES (OWL-Time) - Deactivated for now
-# Activate later when you add time:Interval modeling in OWL
+# TIME SHAPES — Deactivated
 #################################################
 
 jto:OpeningTimeShape
@@ -90,8 +96,7 @@ jto:TimeIntervalShape
     ] .
 
 #################################################
-# GEO SHAPES (GeoSPARQL) - Deactivated for now
-# Activate later when you model geo:hasGeometry / geo:asWKT in OWL
+# GEO SHAPES — Deactivated
 #################################################
 
 jto:GeoFeatureShape
