@@ -2202,8 +2202,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.jordantourism.org/ontology">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:imports rdf:resource="http://www.jordantourism.org/jto_core_shapes_v1_1.ttl"/>
-    <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+<owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
     <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
     <dc:creator>Enad Abu Zaid</dc:creator>
     <dc:description xml:lang="en">This module defines the core TourismEntity classes including Place, Event, and Route hierarchies for the Jordan Tourism Ontology. It covers competency questions CQ-001 to CQ-300 related to tourism entities.</dc:description>
