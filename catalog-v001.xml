@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1770037899059" name="duplicate:http://www.jordantourism.org/ontology" uri="jto_tourism_entity_module_v1_stable.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1770037899059" name="duplicate:http://www.jordantourism.org/ontology" uri="jto_tourism_entity_module_v1_1_stable.owl"/>
-    </group>
+    <uri name="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism"
+         uri="jto_tourism_entity_module_v1_2_stable.owl"/>
+    <uri name="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism/1.2"
+         uri="jto_tourism_entity_module_v1_2_stable.owl"/>
 </catalog>
