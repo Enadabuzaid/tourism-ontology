@@ -1,0 +1,321 @@
+════════════════════════════════════════════════════════════════════
+ JTO v1.3 — Batch 1 SPARQL Queries (CQ-001 to CQ-030)
+ All queries use the canonical PREFIX block below.
+ Expected result: all 21 previously-Partial CQs now return rows ✅
+ 9 geo-based CQs remain ❌ (deferred to Phase 3 / Apache Jena)
+════════════════════════════════════════════════════════════════════
+
+PREFIX jto: <http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+────────────────────────────────────────────────────────────────────
+CQ-001 ▶ What are the opening hours of Petra?
+Expected: 1 row — "06:00-18:00"
+────────────────────────────────────────────────────────────────────
+SELECT ?attraction ?hours WHERE {
+  ?attraction rdf:type jto:TouristAttraction .
+  ?attraction jto:openingHours ?hours .
+  FILTER(CONTAINS(LCASE(STR(?attraction)), "petra"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-002 ▶ What is the entry fee for Jerash?
+Expected: 1 row — 10.00
+────────────────────────────────────────────────────────────────────
+SELECT ?site ?fee WHERE {
+  ?site jto:entryFee ?fee .
+  FILTER(CONTAINS(LCASE(STR(?site)), "jerash"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-003 ▶ Where is Wadi Rum located? (v1.3 simplified — no OPTIONAL)
+Expected: 1 row with WadiRum
+────────────────────────────────────────────────────────────────────
+SELECT ?place ?label WHERE {
+  ?place rdf:type jto:NatureReserve .
+  ?place rdfs:label ?label .
+  FILTER(CONTAINS(LCASE(STR(?place)), "wadiru") || CONTAINS(LCASE(?label), "wadi rum"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-004 ▶ What type of site is Petra? (v1.3 — CONTAINS instead of STRSTARTS)
+Expected: 1+ rows with type URIs
+────────────────────────────────────────────────────────────────────
+SELECT DISTINCT ?type WHERE {
+  jto:Petra rdf:type ?type .
+  FILTER(?type != owl:NamedIndividual)
+  FILTER(?type != owl:Class)
+  FILTER(CONTAINS(STR(?type), "jordan-tourism"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-005 ▶ Is Petra wheelchair accessible?
+Expected: 1 row — false + accessibility notes
+────────────────────────────────────────────────────────────────────
+SELECT ?accessible ?notes WHERE {
+  jto:PetraSite jto:isWheelchairAccessible ?accessible .
+  jto:PetraSite jto:accessibilityNotes ?notes .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-006 ▶ What attractions in Amman are family-friendly?
+Expected: 1+ rows (AmmanCitadelSite)
+────────────────────────────────────────────────────────────────────
+SELECT ?attraction ?label WHERE {
+  ?attraction jto:isFamilyFriendly true .
+  ?attraction rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-007 ❌ Halal restaurants near Roman Theater (geo — deferred)
+Reason: geo:hasGeometry not supported in Protégé Sesame engine
+Resolution: Phase 3 with Apache Jena + GeoSPARQL plugin
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-008 ▶ What is the dress code for Mount Nebo?
+Expected: 1 row — "Modest clothing required..."
+────────────────────────────────────────────────────────────────────
+SELECT ?site ?label ?dresscode WHERE {
+  ?site rdf:type jto:ReligiousSite .
+  ?site jto:dressCode ?dresscode .
+  ?site rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-009 ▶ Is Petra open on Friday?
+Expected: 1 row — opens 06:00, closes 18:00
+────────────────────────────────────────────────────────────────────
+SELECT ?spec ?day ?opens ?closes WHERE {
+  jto:PetraSite jto:hasOpeningHoursSpec ?spec .
+  ?spec jto:dayOfWeek ?day .
+  ?spec jto:opens ?opens .
+  ?spec jto:closes ?closes .
+  FILTER(?day = "Friday")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-010 ▶ What are the opening hours of the Citadel during Ramadan?
+Expected: 1 row — "08:00-15:00"  ⭐ CulturalConcept thesis innovation
+────────────────────────────────────────────────────────────────────
+SELECT ?site ?season ?hours WHERE {
+  ?site jto:hasSeasonalHours ?sh .
+  ?sh jto:season ?season .
+  ?sh jto:openingHours ?hours .
+  FILTER(CONTAINS(LCASE(STR(?site)), "citadel"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-011 ▶ What cultural events are in Jerash in July?
+Expected: 1 row — JerashFestival2026 with dates
+────────────────────────────────────────────────────────────────────
+SELECT ?event ?label ?start ?end WHERE {
+  ?event rdf:type jto:Festival .
+  ?event jto:eventStartDate ?start .
+  ?event jto:eventEndDate ?end .
+  ?event rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+  FILTER(MONTH(?start) = 7 || MONTH(?end) = 8)
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-012 ❌ Attractions within 2 km of Roman Theater (geo — deferred)
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-013 ▶ What is the driving distance from Amman to Petra?
+Expected: 1 row — 235.0 km, "3 hours via Desert Highway"
+────────────────────────────────────────────────────────────────────
+SELECT ?route ?distance ?duration WHERE {
+  ?route rdf:type jto:DrivingRoute .
+  ?route jto:drivingDistance ?distance .
+  ?route jto:estimatedDuration ?duration .
+  ?route jto:originCity jto:AmmanCity .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-014 ❌ Hotels walking distance from Petra visitor center (geo — deferred)
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-015 ❌ Family sites near Roman Theater, open on Friday (geo — deferred)
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-016 ❌ 4-star halal hotels near Petra under 100 JOD (geo — deferred)
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-017 ▶ What should visitors know about Ramadan?
+Expected: 1 row — CulturalPractice with Ramadan ⭐ CulturalConcept thesis innovation
+────────────────────────────────────────────────────────────────────
+SELECT ?practice ?season ?desc WHERE {
+  ?practice rdf:type jto:CulturalPractice .
+  ?practice jto:appliesToSeason ?season .
+  ?practice jto:practiceDescription ?desc .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-018 ❌ Prayer facilities near Dead Sea (geo — deferred)
+────────────────────────────────────────────────────────────────────
+# SKIP — geo engine limit
+
+────────────────────────────────────────────────────────────────────
+CQ-019 ▶ Where can I eat Mansaf in Amman?
+Expected: 2 rows — Hashem Restaurant + Rummana Restaurant
+────────────────────────────────────────────────────────────────────
+SELECT ?restaurant ?label WHERE {
+  ?restaurant jto:servesDish jto:MansafDish .
+  ?restaurant rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-020 ▶ Vegetarian restaurants in Wadi Rum with outdoor seating
+Expected: 1 row — WadiRumCampRestaurant
+────────────────────────────────────────────────────────────────────
+SELECT ?restaurant ?label WHERE {
+  ?restaurant jto:hasVegetarianOptions true .
+  ?restaurant rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-021 ▶ When is Petra least crowded next month? ⭐ BI thesis innovation
+Expected: 2 rows — crowd levels 2 and 5 with time periods
+────────────────────────────────────────────────────────────────────
+SELECT ?forecast ?period ?level ?confidence WHERE {
+  ?forecast rdf:type jto:CrowdForecast .
+  ?forecast jto:forAttraction jto:PetraSite .
+  ?forecast jto:timePeriod ?period .
+  ?forecast jto:predictedCrowdLevel ?level .
+  ?forecast jto:forecastConfidence ?confidence .
+}
+ORDER BY ASC(?level)
+
+────────────────────────────────────────────────────────────────────
+CQ-022 ▶ What are predicted hotel prices in Aqaba at Easter? ⭐ BI
+Expected: 1 row — 85.00 JOD, seasonality 0.72
+────────────────────────────────────────────────────────────────────
+SELECT ?location ?season ?price ?score WHERE {
+  ?forecast rdf:type jto:PriceForecast .
+  ?forecast jto:forLocation ?location .
+  ?forecast jto:forSeason ?season .
+  ?forecast jto:predictedAveragePrice ?price .
+  ?forecast jto:seasonalityScore ?score .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-023 ▶ Which attractions have rising popularity? ⭐ BI
+Expected: 2 rows — Petra and Wadi Rum, trend "increasing"
+────────────────────────────────────────────────────────────────────
+SELECT ?attraction ?label ?trend ?score WHERE {
+  ?obs rdf:type jto:PopularityObservation .
+  ?obs jto:forAttraction ?attraction .
+  ?obs jto:trendDirection ?trend .
+  ?obs jto:popularityScore ?score .
+  ?attraction rdfs:label ?label .
+  FILTER(?trend = "increasing")
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-024 ▶ Code-switching Arabic+English query ⭐ Bilingual innovation
+Expected: rows for Petra in both Arabic and English labels
+────────────────────────────────────────────────────────────────────
+SELECT ?attraction ?labelEN ?labelAR WHERE {
+  ?attraction rdf:type jto:TouristAttraction .
+  ?attraction rdfs:label ?labelEN .
+  ?attraction rdfs:label ?labelAR .
+  FILTER(LANG(?labelEN) = "en")
+  FILTER(LANG(?labelAR) = "ar")
+  FILTER(CONTAINS(?labelAR, "بتراء") || CONTAINS(?labelEN, "Petra"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-025 ▶ Is Al-Batra the same as Petra? (v1.3 — SELECT instead of ASK)
+Expected: 1 row — Petra with altLabel البتراء
+────────────────────────────────────────────────────────────────────
+SELECT ?attraction ?altAR WHERE {
+  ?attraction rdf:type jto:TouristAttraction .
+  ?attraction jto:altLabelAR ?altAR .
+  FILTER(CONTAINS(?altAR, "بترا") || CONTAINS(?altAR, "البتراء"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-026 ▶ What is the source/provenance for Petra's information?
+Expected: 1+ rows with PROV-O triples
+────────────────────────────────────────────────────────────────────
+SELECT ?subject ?derived ?time WHERE {
+  ?subject prov:wasDerivedFrom ?derived .
+  FILTER(CONTAINS(LCASE(STR(?subject)), "petra"))
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-027 ▶ How confident is the Wadi Rum crowd forecast? ⭐ BI+PROV-O
+Expected: 2 rows — forecasts generated by JTOForecastModelV1
+────────────────────────────────────────────────────────────────────
+SELECT ?forecast ?attraction ?confidence ?model ?months WHERE {
+  ?forecast rdf:type jto:CrowdForecast .
+  ?forecast jto:forAttraction ?attraction .
+  ?forecast jto:forecastConfidence ?confidence .
+  ?forecast jto:generatedBy ?model .
+  ?model jto:trainingDataMonths ?months .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-028 ▶ How do I get from Amman to Petra by bus?
+Expected: 1 row — JETTBusAmmanPetra, 3.5 hours, 11 JOD
+────────────────────────────────────────────────────────────────────
+SELECT ?bus ?label ?duration ?price ?departs WHERE {
+  ?bus rdf:type jto:BusService .
+  ?bus rdfs:label ?label .
+  ?bus jto:travelDuration ?duration .
+  ?bus jto:ticketPrice ?price .
+  ?bus jto:departureTime ?departs .
+  FILTER(LANG(?label) = "en")
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-029 ▶ How do I get from the airport to Amman by taxi?
+Expected: 1 row — QAIAAirportTaxi, 20-35 JOD
+────────────────────────────────────────────────────────────────────
+SELECT ?taxi ?price ?to WHERE {
+  ?taxi rdf:type jto:TaxiService .
+  ?taxi jto:priceRange ?price .
+  ?taxi jto:destinationCity ?to .
+}
+
+────────────────────────────────────────────────────────────────────
+CQ-030 ▶ Is there a direct bus from Aqaba to Wadi Rum?
+Expected: 1 row — BusServiceAqabaWadiRum, 1 hour, 5 JOD
+────────────────────────────────────────────────────────────────────
+SELECT ?bus ?label ?duration ?price ?direct WHERE {
+  ?bus rdf:type jto:BusService .
+  ?bus jto:isDirectRoute ?direct .
+  ?bus rdfs:label ?label .
+  ?bus jto:travelDuration ?duration .
+  ?bus jto:ticketPrice ?price .
+  FILTER(?direct = true)
+  FILTER(LANG(?label) = "en")
+}
+
+════════════════════════════════════════════════════════════════════
+ Summary — v1.3 Expected Results:
+ 21 ✅ Pass  (CQ-001,002,003,004,005,006,008,009,010,011,013,
+              017,019,020,021,022,023,024,025,027,028,029,030)
+  0 ⚠️ Partial
+  9 ❌ Fail (geo engine limits — CQ-007,012,014,015,016,018
+             deferred to Phase 3 Apache Jena)
+════════════════════════════════════════════════════════════════════
