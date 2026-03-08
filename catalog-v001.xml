@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri name="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism"
-         uri="jto_tourism_entity_module_v1_2_stable.owl"/>
-    <uri name="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism/1.2"
-         uri="jto_tourism_entity_module_v1_2_stable.owl"/>
+    <uri id="Imports Wizard Entry" name="jto_tourism_entity_module_v1_3_stable.owl" uri="jto_tourism_entity_module_v1_3_stable.owl"/>
 </catalog>
