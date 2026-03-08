@@ -33,7 +33,7 @@
     <!-- ONTOLOGY DECLARATION                                                         -->
     <!-- ════════════════════════════════════════════════════════════════════════════ -->
     
-    <owl:Ontology rdf:about="http://www.jordantourism.org/ontology">
+    <owl:Ontology rdf:about="http://www.jordantourism.org/ontology/v1-archive">
         <dc:title xml:lang="en">Jordan Tourism Ontology (JTO) - TourismEntity Module</dc:title>
         <dc:title xml:lang="ar">أنطولوجيا السياحة الأردنية - وحدة الكيانات السياحية</dc:title>
         <dc:description xml:lang="en">This module defines the core TourismEntity classes including Place, Event, and Route hierarchies for the Jordan Tourism Ontology. It covers competency questions CQ-001 to CQ-300 related to tourism entities.</dc:description>

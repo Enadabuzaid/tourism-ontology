@@ -8,7 +8,23 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:sh="http://www.w3.org/ns/shacl#"
 >
-  <rdf:Description rdf:about="http://www.jordantourism.org/ontology#PrivateDining">
+
+  <rdf:Description rdf:about="http://www.jordantourism.org/ontology">
+      <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+      <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+      <dc:creator>Enad Abu Zaid</dc:creator>
+      <dc:description xml:lang="en">This module defines the core TourismEntity classes including Place, Event, and Route hierarchies for the Jordan Tourism Ontology. It covers competency questions CQ-001 to CQ-300 related to tourism entities.</dc:description>
+      <dc:description xml:lang="ar">هذه الوحدة تحدد فئات الكيانات السياحية الأساسية بما في ذلك التسلسلات الهرمية للأماكن والأحداث والمسارات لأنطولوجيا السياحة الأردنية.</dc:description>
+      <dc:title xml:lang="en">Jordan Tourism Ontology (JTO) - TourismEntity Module</dc:title>
+      <dc:title xml:lang="ar">أنطولوجيا السياحة الأردنية - وحدة الكيانات السياحية</dc:title>
+      <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-01-17</dcterms:created>
+      <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-07</dcterms:modified>
+      <rdfs:comment xml:lang="en">Module: TourismEntity (Place + Event + Route)</rdfs:comment>
+      <owl:versionInfo>2.0.0</owl:versionInfo>
+    </rdf:Description>
+
+<rdf:Description rdf:about="http://www.jordantourism.org/ontology#PrivateDining">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.jordantourism.org/ontology#LuxuryService"/>
     <jto:cqReference>CQ-213</jto:cqReference>
@@ -2200,22 +2216,7 @@
     <rdfs:label xml:lang="en">Price Comparison</rdfs:label>
     <rdfs:label xml:lang="ar">مقارنة الأسعار</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.jordantourism.org/ontology">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:imports rdf:resource="http://www.jordantourism.org/jto_core_shapes_v1_1.ttl"/>
-    <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
-    <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
-    <dc:creator>Enad Abu Zaid</dc:creator>
-    <dc:description xml:lang="en">This module defines the core TourismEntity classes including Place, Event, and Route hierarchies for the Jordan Tourism Ontology. It covers competency questions CQ-001 to CQ-300 related to tourism entities.</dc:description>
-    <dc:description xml:lang="ar">هذه الوحدة تحدد فئات الكيانات السياحية الأساسية بما في ذلك التسلسلات الهرمية للأماكن والأحداث والمسارات لأنطولوجيا السياحة الأردنية.</dc:description>
-    <dc:title xml:lang="en">Jordan Tourism Ontology (JTO) - TourismEntity Module</dc:title>
-    <dc:title xml:lang="ar">أنطولوجيا السياحة الأردنية - وحدة الكيانات السياحية</dc:title>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-01-17</dcterms:created>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-07</dcterms:modified>
-    <rdfs:comment xml:lang="en">Module: TourismEntity (Place + Event + Route)</rdfs:comment>
-    <owl:versionInfo>2.0.0</owl:versionInfo>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.jordantourism.org/ontology#UndergroundBBQ">
+<rdf:Description rdf:about="http://www.jordantourism.org/ontology#UndergroundBBQ">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.jordantourism.org/ontology#CookingMethod"/>
     <rdfs:comment xml:lang="en">Traditional Bedouin cooking method in underground sand pit.</rdfs:comment>
