@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF
+<rdf:RDF xmlns:geo="http://www.opengis.net/ont/geosparql#"
+   xmlns:prov="http://www.w3.org/ns/prov#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:dcterms="http://purl.org/dc/terms/"
    xmlns:jto="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#"
@@ -7,7 +8,20 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:sh="http://www.w3.org/ns/shacl#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
 >
+
+  <!-- ========== OWL ONTOLOGY DECLARATION ========== -->
+  <owl:Ontology rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism">
+    <owl:versionIRI rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism/1.5"/>
+    <owl:versionInfo>1.5</owl:versionInfo>
+    <dc:title xml:lang="en">Jordan Tourism Ontology (JTO)</dc:title>
+    <dc:title xml:lang="ar">أنطولوجيا السياحة الأردنية</dc:title>
+    <dc:creator>Enad Abuzaid</dc:creator>
+    <dc:description xml:lang="en">An OWL ontology for Jordan tourism entities, covering attractions, accommodation, transport, cultural practices, accessibility, and BI forecasting.</dc:description>
+    <rdfs:comment xml:lang="en">JTO v1.5 — Jordan Tourism Ontology with seed individuals for CQ-001 to CQ-030 plus GeoSPARQL geometries.</rdfs:comment>
+  </owl:Ontology>
+
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrivateDining">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#LuxuryService"/>
@@ -1177,6 +1191,21 @@
     <rdfs:comment xml:lang="en">A route served by public or private transportation.</rdfs:comment>
     <rdfs:label xml:lang="en">Transport Route</rdfs:label>
     <rdfs:label xml:lang="ar">طريق نقل</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DrivingRoute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Route"/>
+    <jto:cqReference>CQ-013</jto:cqReference>
+    <rdfs:comment xml:lang="en">A self-drive route between two cities or locations.</rdfs:comment>
+    <rdfs:label xml:lang="en">Driving Route</rdfs:label>
+    <rdfs:label xml:lang="ar">مسار القيادة</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ForecastModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <jto:cqReference>CQ-027</jto:cqReference>
+    <rdfs:comment xml:lang="en">A predictive model used to generate crowd, price, or popularity forecasts for tourism planning.</rdfs:comment>
+    <rdfs:label xml:lang="en">Forecast Model</rdfs:label>
+    <rdfs:label xml:lang="ar">نموذج التنبؤ</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AccessibleEntrance">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -12613,286 +12642,139 @@
   </rdf:Description>
 
 
-    <!-- ========== JTO v1.5 INDIVIDUALS (Added 2026-04-11) ========== -->
+    <!-- ========== JTO v1.5 INDIVIDUALS (CQ-011 to CQ-030) ========== -->
+    <!-- NOTE: DriveRouteAmmanPetra already in v1.3, JTOForecastModelV1 already in v1.3 -->
+    <!-- NOTE: MansafDish, HashemRestaurant, SufraRestaurant, JETTBusAmmanPetra already in v1.3/v1.4 -->
+    <!-- NOTE: AqabaPriceForecastEaster, PopObsPetra2025 already in v1.3/v1.4 -->
 
-
-    <!-- =====================================================
-         CQ-011: Cultural events in Jerash in July
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashFestival2025">
+    <!-- CQ-011: Festival in Jerash July -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashFestival2025">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Festival"/>
-        <locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashCity"/>
-        <startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-22</startDate>
-        <endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-10</endDate>
+        <jto:locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashCity"/>
+        <jto:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-22</jto:startDate>
+        <jto:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-10</jto:endDate>
         <rdfs:label xml:lang="en">Jerash Festival of Culture and Arts 2025</rdfs:label>
         <rdfs:label xml:lang="ar">مهرجان جرش للثقافة والفنون 2025</rdfs:label>
-        <rdfs:comment xml:lang="en">Annual cultural festival held at the ancient ruins of Jerash featuring music, dance, and theater performances.</rdfs:comment>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanSummerFestival2025">
-        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Festival"/>
-        <locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
-        <startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-01</startDate>
-        <endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-15</endDate>
-        <rdfs:label xml:lang="en">Amman Summer Festival 2025</rdfs:label>
-        <rdfs:label xml:lang="ar">مهرجان عمان الصيفي 2025</rdfs:label>
-    </owl:NamedIndividual>
-
-
-    <!-- =====================================================
-         CQ-013: Driving distance Amman to Petra
-         ===================================================== -->
-
-
-
-
-    <!-- =====================================================
-         CQ-017: Visiting during Ramadan — Cultural practices
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason">
+    <!-- CQ-017: Ramadan practices -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ReligiousSeason"/>
         <rdfs:label xml:lang="en">Ramadan</rdfs:label>
         <rdfs:label xml:lang="ar">رمضان</rdfs:label>
-        <rdfs:comment xml:lang="en">Islamic holy month of fasting observed throughout Jordan.</rdfs:comment>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanEatingPractice">
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanEatingPractice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CulturalPractice"/>
-        <appliesToSeason rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason"/>
-        <description>Avoid eating, drinking, or smoking in public during daylight hours out of respect for those fasting.</description>
+        <jto:appliesToSeason rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason"/>
+        <rdfs:comment xml:lang="en">Avoid eating, drinking, or smoking in public during daylight hours.</rdfs:comment>
         <rdfs:label xml:lang="en">Ramadan Public Eating Etiquette</rdfs:label>
         <rdfs:label xml:lang="ar">آداب الأكل العام في رمضان</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanDressPractice">
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanDressPractice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CulturalPractice"/>
-        <appliesToSeason rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason"/>
-        <description>Dress more conservatively during Ramadan, especially near religious sites.</description>
+        <jto:appliesToSeason rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RamadanSeason"/>
+        <rdfs:comment xml:lang="en">Dress more conservatively during Ramadan, especially near religious sites.</rdfs:comment>
         <rdfs:label xml:lang="en">Ramadan Dress Code Practice</rdfs:label>
         <rdfs:label xml:lang="ar">ممارسة اللباس في رمضان</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-
-    <!-- =====================================================
-         CQ-019: Where to eat Mansaf in Amman
-         ===================================================== -->
-
-
-
-
-
-    <!-- =====================================================
-         CQ-020: Vegetarian restaurants with outdoor seating
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#OutdoorSeatingAmenity">
+    <!-- CQ-020: Vegetarian + outdoor seating -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#OutdoorSeatingAmenity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Amenity"/>
         <rdfs:label xml:lang="en">outdoor dining</rdfs:label>
         <rdfs:label xml:lang="ar">تناول الطعام في الهواء الطلق</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#FeynanEcolodgeRestaurant">
-        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Restaurant"/>
-        <hasVegetarianOptions rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasVegetarianOptions>
-        <hasAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#OutdoorSeatingAmenity"/>
-        <locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaReserve"/>
-        <rdfs:label xml:lang="en">Feynan Ecolodge Restaurant</rdfs:label>
-        <rdfs:label xml:lang="ar">مطعم فينان إيكولودج</rdfs:label>
-    </owl:NamedIndividual>
-
-
-    <!-- =====================================================
-         CQ-021: When is Petra least crowded (BI CrowdForecast)
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCrowdForecastMorning">
+    <!-- CQ-021: Petra crowd forecast (BI) -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCrowdForecastMorning">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CrowdForecast"/>
-        <forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
-        <timePeriod>Early morning weekdays</timePeriod>
-        <predictedCrowdLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</predictedCrowdLevel>
-        <forecastConfidence rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.85</forecastConfidence>
-        <generatedBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ForecastModelV1"/>
-        <rdfs:label xml:lang="en">Petra Crowd Forecast — Morning</rdfs:label>
-    </owl:NamedIndividual>
+        <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+        <jto:timePeriod rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Early morning weekdays</jto:timePeriod>
+        <jto:predictedCrowdLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</jto:predictedCrowdLevel>
+        <jto:forecastConfidence rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.85</jto:forecastConfidence>
+        <jto:generatedBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JTOForecastModelV1"/>
+        <rdfs:label xml:lang="en">Petra Crowd Forecast - Morning</rdfs:label>
+    </rdf:Description>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCrowdForecastAfternoon">
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCrowdForecastAfternoon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CrowdForecast"/>
-        <forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
-        <timePeriod>Weekend afternoons</timePeriod>
-        <predictedCrowdLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</predictedCrowdLevel>
-        <forecastConfidence rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.78</forecastConfidence>
-        <generatedBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ForecastModelV1"/>
-        <rdfs:label xml:lang="en">Petra Crowd Forecast — Afternoon</rdfs:label>
-    </owl:NamedIndividual>
+        <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+        <jto:timePeriod rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Weekend afternoons</jto:timePeriod>
+        <jto:predictedCrowdLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</jto:predictedCrowdLevel>
+        <jto:forecastConfidence rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.78</jto:forecastConfidence>
+        <jto:generatedBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JTOForecastModelV1"/>
+        <rdfs:label xml:lang="en">Petra Crowd Forecast - Afternoon</rdfs:label>
+    </rdf:Description>
 
-
-    <!-- =====================================================
-         CQ-022: Hotel prices in Aqaba during Easter
-         ===================================================== -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaPriceForecastSummer">
-        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PriceForecast"/>
-        <forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
-        <forSeason>Summer</forSeason>
-        <predictedAveragePrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">65.0</predictedAveragePrice>
-        <seasonalityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.55</seasonalityScore>
-        <rdfs:label xml:lang="en">Aqaba Price Forecast — Summer</rdfs:label>
-    </owl:NamedIndividual>
-
-
-    <!-- =====================================================
-         CQ-023: Attractions with increasing popularity
-         ===================================================== -->
-
-
-
-
-    <!-- =====================================================
-         CQ-024: Bilingual code-switching test
-         (PetraSite should already have EN+AR labels from v1.4)
-         ===================================================== -->
-
-
-    <!-- =====================================================
-         CQ-026: PROV-O provenance for Petra opening hours
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraHoursProvenance">
-        <rdf:type rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <prov:wasDerivedFrom rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanTourismBoardSource"/>
-        <prov:generatedAtTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-15T10:00:00</prov:generatedAtTime>
-        <rdfs:label xml:lang="en">Petra Opening Hours Data</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanTourismBoardSource">
+    <!-- CQ-026: PROV-O provenance agent -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanTourismBoardSource">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.w3.org/ns/prov#Agent"/>
         <rdfs:label xml:lang="en">Jordan Tourism Board</rdfs:label>
         <rdfs:label xml:lang="ar">هيئة تنشيط السياحة الأردنية</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-
-    <!-- =====================================================
-         CQ-027: Forecast model metadata (BI + PROV-O)
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ForecastModelV1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ForecastModel"/>
-        <trainingDataMonths rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</trainingDataMonths>
-        <rdfs:label xml:lang="en">JTO Forecast Model v1</rdfs:label>
-    </owl:NamedIndividual>
-
-
-    <!-- =====================================================
-         CQ-028: Bus from Amman to Petra
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAmmanPetraBus">
+    <!-- CQ-028: Bus route Amman to Petra -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAmmanPetraBus">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TransportRoute"/>
-        <originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
-        <destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
-        <hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JETTBusAmmanPetra"/>
-        <isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isDirectRoute>
+        <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+        <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
+        <jto:hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JETTBusAmmanPetra"/>
+        <jto:isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isDirectRoute>
         <rdfs:label xml:lang="en">Amman to Petra Bus Route</rdfs:label>
-        <rdfs:label xml:lang="ar">خط باص عمان إلى البتراء</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
+    <!-- CQ-029: Taxi airport to Amman -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#QueenAliaAirportIndividual">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Airport"/>
+        <rdfs:label xml:lang="en">Queen Alia International Airport</rdfs:label>
+        <rdfs:label xml:lang="ar">مطار الملكة علياء الدولي</rdfs:label>
+    </rdf:Description>
 
-
-    <!-- =====================================================
-         CQ-029: Taxi from airport to Amman
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAirportAmmanTaxi">
-        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TransportRoute"/>
-        <originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#QueenAliaAirport"/>
-        <destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
-        <hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTaxiService"/>
-        <rdfs:label xml:lang="en">Airport to Amman Taxi Route</rdfs:label>
-        <rdfs:label xml:lang="ar">خط تاكسي المطار - عمان</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTaxiService">
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTaxiService">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TaxiService"/>
-        <priceRange>20-35 JOD</priceRange>
+        <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20-35 JOD</jto:priceRange>
         <rdfs:label xml:lang="en">Queen Alia Airport Taxi Service</rdfs:label>
-        <rdfs:label xml:lang="ar">خدمة تاكسي مطار الملكة علياء</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-
-
-    <!-- =====================================================
-         CQ-030: Direct bus Aqaba to Wadi Rum
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAqabaWadiRumBus">
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAirportAmmanTaxi">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TransportRoute"/>
-        <originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
-        <destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumArea"/>
-        <hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumBusService"/>
-        <isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isDirectRoute>
-        <rdfs:label xml:lang="en">Aqaba to Wadi Rum Bus Route</rdfs:label>
-        <rdfs:label xml:lang="ar">خط باص العقبة - وادي رم</rdfs:label>
-    </owl:NamedIndividual>
+        <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#QueenAliaAirportIndividual"/>
+        <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+        <jto:hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTaxiService"/>
+        <rdfs:label xml:lang="en">Airport to Amman Taxi Route</rdfs:label>
+    </rdf:Description>
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumBusService">
+    <!-- CQ-030: Direct bus Aqaba to Wadi Rum -->
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumBusService">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BusService"/>
-        <travelDuration>1 hour</travelDuration>
-        <ticketPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</ticketPrice>
+        <jto:travelDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1 hour</jto:travelDuration>
+        <jto:ticketPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</jto:ticketPrice>
         <rdfs:label xml:lang="en">Aqaba to Wadi Rum Bus</rdfs:label>
-        <rdfs:label xml:lang="ar">باص العقبة - وادي رم</rdfs:label>
-    </owl:NamedIndividual>
+    </rdf:Description>
 
-
-    <!-- =====================================================
-         GeoSPARQL: Add geo:hasGeometry + WKT to key locations
-         (These work in Apache Jena, NOT Protégé)
-         ===================================================== -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSiteGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.4444 30.3285)</geo:asWKT>
-        <rdfs:label xml:lang="en">Petra Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanTheaterGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.9339 31.9510)</geo:asWKT>
-        <rdfs:label xml:lang="en">Roman Theater Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCitadelGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.9340 31.9522)</geo:asWKT>
-        <rdfs:label xml:lang="en">Amman Citadel Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.4732 31.5085)</geo:asWKT>
-        <rdfs:label xml:lang="en">Dead Sea Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.4260 29.5722)</geo:asWKT>
-        <rdfs:label xml:lang="en">Wadi Rum Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.8961 32.2746)</geo:asWKT>
-        <rdfs:label xml:lang="en">Jerash Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaGeometry">
-        <rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT(35.0063 29.5267)</geo:asWKT>
-        <rdfs:label xml:lang="en">Aqaba Geometry</rdfs:label>
-    </owl:NamedIndividual>
-
+    <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RouteAqabaWadiRumBus">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TransportRoute"/>
+        <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+        <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumArea"/>
+        <jto:hasTransportService rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumBusService"/>
+        <jto:isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isDirectRoute>
+        <rdfs:label xml:lang="en">Aqaba to Wadi Rum Bus Route</rdfs:label>
+    </rdf:Description>
 
 </rdf:RDF>
