@@ -4140,6 +4140,11 @@
     <jto:accessibilityNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Steep rocky terrain — limited wheelchair access. Wheelchair-friendly jeep service available at visitor center.</jto:accessibilityNotes>
   
     <jto:hasOpeningHoursSpec rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraFridayHoursSpec"/>
+  
+    <jto:acceptsCreditCards rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCards>
+    <jto:paymentNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Major credit cards accepted at visitor center, most hotels and restaurants. Carry cash for local vendors inside the site.</jto:paymentNotes>
+    <jto:builtBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NabataeanCivilization"/>
+    <jto:historicalPeriod rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NabataeanPeriod"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DronePhotography">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -5506,7 +5511,9 @@
     <rdfs:label xml:lang="ar">المدرج الروماني في عمان</rdfs:label>
     <jto:officialName xml:lang="en">Roman Theater Amman</jto:officialName>
     <jto:officialName xml:lang="ar">المدرج الروماني في عمان</jto:officialName>
-  </rdf:Description>
+      <jto:constructionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2nd century AD (c. 170 CE)</jto:constructionDate>
+    <jto:builtBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanDecapolis"/>
+</rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#FiveStarHotel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#LuxuryHotel"/>
@@ -11672,7 +11679,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DrivingRoute"/>
     <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
-    <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+    <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
     <jto:drivingDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.0</jto:drivingDistance>
     <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3 hours via Desert Highway</jto:estimatedDuration>
     <jto:isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isDirectRoute>
@@ -11695,5 +11702,914 @@
   </rdf:Description>
 
   <!-- End JTO v1.3 Validation Individuals -->
+
+
+  <!-- ═══ JTO v1.4 — 6 new classes for Batch 2/3 ═══ -->
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourPackage">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourismService"/>
+    <rdfs:label xml:lang="en">Tour Package</rdfs:label>
+    <rdfs:label xml:lang="ar">باقة سياحية</rdfs:label>
+    <rdfs:comment>A bundled tourism offering including transport, accommodation, and activities.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisaRequirement">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TravelInfo"/>
+    <rdfs:label xml:lang="en">Visa Requirement</rdfs:label>
+    <rdfs:label xml:lang="ar">متطلبات التأشيرة</rdfs:label>
+    <rdfs:comment>Entry visa rules for traveling to a country.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PhotographyRule">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CulturalPractice"/>
+    <rdfs:label xml:lang="en">Photography Rule</rdfs:label>
+    <rdfs:label xml:lang="ar">قواعد التصوير</rdfs:label>
+    <rdfs:comment>Rules and restrictions governing photography at a site.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrayerFacility">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Amenity"/>
+    <rdfs:label xml:lang="en">Prayer Facility</rdfs:label>
+    <rdfs:label xml:lang="ar">مرفق للصلاة</rdfs:label>
+    <rdfs:comment>A facility or room designated for prayer.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BudgetInfo">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TravelInfo"/>
+    <rdfs:label xml:lang="en">Budget Information</rdfs:label>
+    <rdfs:label xml:lang="ar">معلومات الميزانية</rdfs:label>
+    <rdfs:comment>Cost guidance for budget travellers visiting a destination.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ChildrenActivity">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Activity"/>
+    <rdfs:label xml:lang="en">Children Activity</rdfs:label>
+    <rdfs:label xml:lang="ar">نشاط للأطفال</rdfs:label>
+    <rdfs:comment>An activity suitable for children and family visits.</rdfs:comment>
+  </owl:Class>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       JTO v1.4 — Batch 2 Validation Individuals (CQ-031 to CQ-060)
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- CQ-031: Car rental at Amman Airport -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HertzQAIAAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CarRentalService"/>
+    <jto:locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#QueenAliaAirport"/>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25-80 JOD/day</jto:priceRange>
+    <jto:acceptsCreditCard rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCard>
+    <jto:is24Hours rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:is24Hours>
+    <rdfs:label xml:lang="en">Hertz Car Rental - Queen Alia Airport</rdfs:label>
+    <rdfs:label xml:lang="ar">هيرتز لتأجير السيارات - مطار الملكة علياء</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BudgetCarRentalQAIA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CarRentalService"/>
+    <jto:locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#QueenAliaAirport"/>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">18-50 JOD/day</jto:priceRange>
+    <jto:acceptsCreditCard rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCard>
+    <rdfs:label xml:lang="en">Budget Car Rental - Queen Alia Airport</rdfs:label>
+    <rdfs:label xml:lang="ar">بدجت لتأجير السيارات - مطار الملكة علياء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-032: Route Dead Sea to Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DriveRouteDeadSeaPetra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DrivingRoute"/>
+    <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea"/>
+    <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
+    <jto:drivingDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170.0</jto:drivingDistance>
+    <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.5 hours via King's Highway</jto:estimatedDuration>
+    <jto:isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isDirectRoute>
+    <rdfs:label xml:lang="en">Dead Sea to Petra Driving Route</rdfs:label>
+    <rdfs:label xml:lang="ar">مسار القيادة من البحر الميت إلى البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-033: Hotel in Petra with airport transfer -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#MovenpickPetraHotel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hotel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
+    <jto:starRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</jto:starRating>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">150.00</jto:pricePerNight>
+    <jto:breakfastIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:breakfastIncluded>
+    <jto:breakfastType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">buffet</jto:breakfastType>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTransferAmenity"/>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SwimmingPoolAmenity"/>
+    <jto:acceptsCreditCard rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCard>
+    <jto:petFriendly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:petFriendly>
+    <rdfs:label xml:lang="en">Mövenpick Resort Petra</rdfs:label>
+    <rdfs:label xml:lang="ar">فندق موفنبيك البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-033 & CQ-036: Amenity individuals -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTransferAmenity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Amenity"/>
+    <jto:amenityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">airport transfer</jto:amenityType>
+    <rdfs:label xml:lang="en">Airport Transfer</rdfs:label>
+    <rdfs:label xml:lang="ar">خدمة نقل من المطار</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SwimmingPoolAmenity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Amenity"/>
+    <jto:amenityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swimming pool</jto:amenityType>
+    <rdfs:label xml:lang="en">Swimming Pool</rdfs:label>
+    <rdfs:label xml:lang="ar">مسبح</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ParkingAmenity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Amenity"/>
+    <jto:amenityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parking</jto:amenityType>
+    <rdfs:label xml:lang="en">Free Parking</rdfs:label>
+    <rdfs:label xml:lang="ar">موقف سيارات مجاني</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-034: 3-star hotel Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HolidayInnAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hotel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:starRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</jto:starRating>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55.00</jto:pricePerNight>
+    <jto:breakfastIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:breakfastIncluded>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <jto:petFriendly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:petFriendly>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ParkingAmenity"/>
+    <jto:acceptsCreditCard rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCard>
+    <rdfs:label xml:lang="en">Holiday Inn Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">هوليداي إن عمان</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CrownePlazaAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hotel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:starRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</jto:starRating>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">65.00</jto:pricePerNight>
+    <jto:breakfastIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:breakfastIncluded>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <jto:petFriendly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:petFriendly>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ParkingAmenity"/>
+    <jto:acceptsCreditCard rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:acceptsCreditCard>
+    <rdfs:label xml:lang="en">Crowne Plaza Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">كراون بلازا عمان</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-035: Hostel with private room Wadi Rum -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumStarsHostel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hostel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:hasRoomType rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrivateRoomWadiRum"/>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.00</jto:pricePerNight>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <rdfs:label xml:lang="en">Wadi Rum Stars Hostel</rdfs:label>
+    <rdfs:label xml:lang="ar">نزل نجوم وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrivateRoomWadiRum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrivateRoom"/>
+    <jto:capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</jto:capacity>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.00</jto:pricePerNight>
+    <rdfs:label xml:lang="en">Private Room - Wadi Rum Stars</rdfs:label>
+    <rdfs:label xml:lang="ar">غرفة خاصة - نجوم وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-036: Dead Sea hotel with pool -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#KempinskiDeadSea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hotel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea"/>
+    <jto:starRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</jto:starRating>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">200.00</jto:pricePerNight>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SwimmingPoolAmenity"/>
+    <jto:offersAmenity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AirportTransferAmenity"/>
+    <jto:breakfastIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:breakfastIncluded>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <rdfs:label xml:lang="en">Kempinski Hotel Ishtar Dead Sea</rdfs:label>
+    <rdfs:label xml:lang="ar">فندق كمبينسكي عشتار البحر الميت</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-037: Petra hotel free breakfast -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraGuestHouse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hotel"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
+    <jto:starRating rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</jto:starRating>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.00</jto:pricePerNight>
+    <jto:breakfastIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:breakfastIncluded>
+    <jto:breakfastType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">traditional Jordanian breakfast</jto:breakfastType>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <jto:petFriendly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:petFriendly>
+    <rdfs:label xml:lang="en">Petra Guest House Hotel</rdfs:label>
+    <rdfs:label xml:lang="ar">فندق ضيف البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-038: Weather Petra March -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WeatherPetraMarch">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WeatherData"/>
+    <jto:forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:month rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</jto:month>
+    <jto:avgHighTemp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18.0</jto:avgHighTemp>
+    <jto:avgLowTemp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</jto:avgLowTemp>
+    <jto:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cool and pleasant spring weather. Occasional rain possible. Ideal for hiking.</jto:description>
+    <jto:snowfallPossible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:snowfallPossible>
+    <rdfs:label xml:lang="en">Petra Weather - March</rdfs:label>
+    <rdfs:label xml:lang="ar">طقس البتراء في مارس</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-041: Snow in Petra winter -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WeatherPetraJanuary">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WeatherData"/>
+    <jto:forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:month rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</jto:month>
+    <jto:avgHighTemp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.0</jto:avgHighTemp>
+    <jto:avgLowTemp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</jto:avgLowTemp>
+    <jto:snowfallPossible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:snowfallPossible>
+    <jto:snowMonths rdf:datatype="http://www.w3.org/2001/XMLSchema#string">January, February</jto:snowMonths>
+    <jto:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold winters with occasional snow. Site may close during heavy snowfall.</jto:description>
+    <rdfs:label xml:lang="en">Petra Weather - January (Winter)</rdfs:label>
+    <rdfs:label xml:lang="ar">طقس البتراء في يناير (الشتاء)</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-039: Wadi Rum December -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SeasonalAdviceWadiRumDecember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SeasonalAdvice"/>
+    <jto:forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:forMonth rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</jto:forMonth>
+    <jto:recommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good for stargazing and desert camping. Cold nights — bring warm layers. Very few tourists compared to peak season.</jto:recommendation>
+    <jto:weatherConditions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold days (15°C), very cold nights (0-5°C). Clear skies ideal for astronomy.</jto:weatherConditions>
+    <rdfs:label xml:lang="en">Wadi Rum December Seasonal Advice</rdfs:label>
+    <rdfs:label xml:lang="ar">نصائح موسم ديسمبر لوادي رم</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-040: Best time Dead Sea -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BestTimeDeadSea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BestTimeToVisit"/>
+    <jto:forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea"/>
+    <jto:recommendedSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spring and Autumn</jto:recommendedSeason>
+    <jto:recommendedMonths rdf:datatype="http://www.w3.org/2001/XMLSchema#string">March, April, October, November</jto:recommendedMonths>
+    <jto:reason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mild temperatures (25-30°C) ideal for floating and spa treatments. Summer is very hot (40°C+) but waters are therapeutic year-round.</jto:reason>
+    <rdfs:label xml:lang="en">Dead Sea Best Time to Visit</rdfs:label>
+    <rdfs:label xml:lang="ar">أفضل وقت لزيارة البحر الميت</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-042: Jordan country info -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Country"/>
+    <jto:currency rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jordanian Dinar</jto:currency>
+    <jto:currencyCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JOD</jto:currencyCode>
+    <jto:exchangeRateUSD rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.709</jto:exchangeRateUSD>
+    <jto:officialLanguage rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arabic</jto:officialLanguage>
+    <jto:countryCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JO</jto:countryCode>
+    <rdfs:label xml:lang="en">Jordan</rdfs:label>
+    <rdfs:label xml:lang="ar">الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-043: English in tourist areas -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TouristAreaPetra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TouristArea"/>
+    <jto:languageSpoken rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</jto:languageSpoken>
+    <jto:languagePrevalence rdf:datatype="http://www.w3.org/2001/XMLSchema#string">widely spoken in hotels, restaurants, and tourist sites</jto:languagePrevalence>
+    <jto:forLocation rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <rdfs:label xml:lang="en">Petra Tourist Area</rdfs:label>
+    <rdfs:label xml:lang="ar">منطقة البتراء السياحية</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-044: Summer packing list -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TravelAdviceJordanSummer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TravelAdvice"/>
+    <jto:forSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">summer</jto:forSeason>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sunscreen SPF50+</jto:packingItem>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">light breathable clothing</jto:packingItem>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hat or headscarf</jto:packingItem>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">reusable water bottle</jto:packingItem>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comfortable walking shoes</jto:packingItem>
+    <jto:packingItem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">modest cover-up for religious sites</jto:packingItem>
+    <rdfs:label xml:lang="en">Jordan Summer Packing Advice</rdfs:label>
+    <rdfs:label xml:lang="ar">نصائح التعبئة لصيف الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-045: Credit cards in Petra -->
+  <!-- patch PetraSite with acceptsCreditCards after loop -->
+
+  <!-- CQ-046: Handicraft shop in Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanCraftCenter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Shop"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:sells rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanianHandicraft"/>
+    <rdfs:label xml:lang="en">Jordan Craft Center</rdfs:label>
+    <rdfs:label xml:lang="ar">مركز الحرف الأردنية</rdfs:label>
+      <jto:isAuthentic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isAuthentic>
+</rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NoorAlHusseynArtCenter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Shop"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:sells rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanianHandicraft"/>
+    <rdfs:label xml:lang="en">Noor Al-Hussein Foundation Art Center</rdfs:label>
+    <rdfs:label xml:lang="ar">مركز فنون مؤسسة نور الحسين</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanianHandicraft">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Handicraft"/>
+    <jto:isAuthentic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isAuthentic>
+    <jto:productType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pottery, embroidery, Dead Sea products, Bedouin jewellery</jto:productType>
+    <rdfs:label xml:lang="en">Jordanian Authentic Handicraft</rdfs:label>
+    <rdfs:label xml:lang="ar">الحرف اليدوية الأردنية الأصيلة</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-047: Souvenirs from Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSandBottle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Souvenir"/>
+    <jto:popularAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:productType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decorative sand art in bottle</jto:productType>
+    <rdfs:label xml:lang="en">Petra Sand Bottle</rdfs:label>
+    <rdfs:label xml:lang="ar">زجاجة رمل البتراء</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NabataeanReplicaFigurine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Souvenir"/>
+    <jto:popularAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:productType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nabataean archaeological replica</jto:productType>
+    <rdfs:label xml:lang="en">Nabataean Replica Figurine</rdfs:label>
+    <rdfs:label xml:lang="ar">تمثال نبطي تقليدي</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-048: Haggling etiquette -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanMarketEtiquette">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ShoppingEtiquette"/>
+    <jto:hagglingExpected rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:hagglingExpected>
+    <jto:settingType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">traditional souks and markets</jto:settingType>
+    <jto:notes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Haggling is common in traditional markets (souks) but not in fixed-price shops. Start at 50-60% of asking price. Be friendly and respectful.</jto:notes>
+    <rdfs:label xml:lang="en">Jordan Market Shopping Etiquette</rdfs:label>
+    <rdfs:label xml:lang="ar">آداب التسوق في أسواق الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-049: Activities in Wadi Rum -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JeepTourWadiRum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Activity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jeep desert tour</jto:activityType>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:bookingRequired>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25-80 JOD per person</jto:priceRange>
+    <rdfs:label xml:lang="en">Jeep Desert Tour - Wadi Rum</rdfs:label>
+    <rdfs:label xml:lang="ar">جولة الجيب الصحراوية - وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CamelRideWadiRum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Activity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">camel riding</jto:activityType>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:bookingRequired>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10-30 JOD per hour</jto:priceRange>
+    <rdfs:label xml:lang="en">Camel Ride - Wadi Rum</rdfs:label>
+    <rdfs:label xml:lang="ar">ركوب الجمال - وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HotAirBalloonWadiRum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Activity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hot air balloon ride</jto:activityType>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:bookingRequired>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">100-150 JOD per person</jto:priceRange>
+    <rdfs:label xml:lang="en">Hot Air Balloon - Wadi Rum</rdfs:label>
+    <rdfs:label xml:lang="ar">رحلة منطاد - وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-050: Guided tour Jerash -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashGuidedTour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#GuidedTour"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashRuinsSite"/>
+    <jto:bookingAdvanceRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:bookingAdvanceRequired>
+    <jto:tourDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2-3 hours</jto:tourDuration>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15-25 JOD per person</jto:priceRange>
+    <jto:peakSeasonNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Book in advance during Jerash Festival (July-August). Guides available at the entrance daily.</jto:peakSeasonNote>
+    <rdfs:label xml:lang="en">Jerash Ruins Guided Tour</rdfs:label>
+    <rdfs:label xml:lang="ar">جولة إرشادية في آثار جرش</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-051: Water sports Dead Sea -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaFloating">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WaterActivity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea"/>
+    <jto:restrictions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No diving or underwater swimming — extremely high salt concentration dangerous to eyes. No open wounds.</jto:restrictions>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">floating / therapeutic bathing</jto:activityType>
+    <rdfs:label xml:lang="en">Dead Sea Floating</rdfs:label>
+    <rdfs:label xml:lang="ar">السباحة والطفو في البحر الميت</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-052: Scuba diving Aqaba -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ArabianDiveSiteAqaba">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DiveSite"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+    <jto:difficultyLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beginner to intermediate</jto:difficultyLevel>
+    <jto:certificationRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PADI Open Water or equivalent</jto:certificationRequired>
+    <jto:maxDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18.0</jto:maxDepth>
+    <rdfs:label xml:lang="en">Arabian Dive Site - Aqaba</rdfs:label>
+    <rdfs:label xml:lang="ar">موقع الغوص العربي - العقبة</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CedarDiveSiteAqaba">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DiveSite"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+    <jto:difficultyLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">advanced</jto:difficultyLevel>
+    <jto:certificationRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PADI Advanced Open Water</jto:certificationRequired>
+    <jto:maxDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.0</jto:maxDepth>
+    <rdfs:label xml:lang="en">Cedar Pride Wreck - Aqaba</rdfs:label>
+    <rdfs:label xml:lang="ar">حطام سيدار برايد - العقبة</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-053: Hospital near Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiMusaHospital">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Hospital"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
+    <jto:is24Hours rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:is24Hours>
+    <jto:distanceFromPetra rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2 km from Petra visitor center</jto:distanceFromPetra>
+    <jto:phoneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+962-3-215-6000</jto:phoneNumber>
+    <rdfs:label xml:lang="en">Wadi Musa Government Hospital</rdfs:label>
+    <rdfs:label xml:lang="ar">مستشفى وادي موسى الحكومي</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-054: 24hr pharmacy Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AlHammoudehPharmacyAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Pharmacy"/>
+    <jto:is24Hours rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:is24Hours>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:phoneNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+962-6-593-5577</jto:phoneNumber>
+    <rdfs:label xml:lang="en">Al-Hammoudeh Pharmacy - Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">صيدلية الحمودة - عمان</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-055: Civilization that built Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NabataeanCivilization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Civilization"/>
+    <jto:originRegion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arabian Peninsula</jto:originRegion>
+    <rdfs:label xml:lang="en">Nabataean Civilization</rdfs:label>
+    <rdfs:label xml:lang="ar">الحضارة النبطية</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NabataeanPeriod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HistoricalPeriod"/>
+    <jto:startYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-400</jto:startYear>
+    <jto:endYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">106</jto:endYear>
+    <jto:periodName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nabataean Kingdom</jto:periodName>
+    <rdfs:label xml:lang="en">Nabataean Period (400 BC – 106 AD)</rdfs:label>
+    <rdfs:label xml:lang="ar">الحقبة النبطية (400 ق.م – 106 م)</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-056: Roman Theater age -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanTheaterAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HistoricalSite"/>
+    <jto:constructionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2nd century AD (circa 138-161 AD)</jto:constructionDate>
+    <jto:historicalPeriod rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanPeriod"/>
+    <jto:estimatedAge rdf:datatype="http://www.w3.org/2001/XMLSchema#string">approximately 1,880 years old</jto:estimatedAge>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6000</jto:capacity>
+    <jto:entryFee rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.00</jto:entryFee>
+    <jto:openingHours rdf:datatype="http://www.w3.org/2001/XMLSchema#string">08:00-19:00 summer, 08:00-17:00 winter</jto:openingHours>
+    <rdfs:label xml:lang="en">Roman Theater - Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">المدرج الروماني - عمان</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanPeriod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HistoricalPeriod"/>
+    <jto:startYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">63</jto:startYear>
+    <jto:endYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">324</jto:endYear>
+    <jto:periodName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Roman Rule of Jordan</jto:periodName>
+    <rdfs:label xml:lang="en">Roman Period in Jordan (63 BC – 324 AD)</rdfs:label>
+    <rdfs:label xml:lang="ar">الحقبة الرومانية في الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-057: Eco lodge Dana with hiking -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaGuestHouseEcoLodge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#EcoLodge"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaReserve"/>
+    <jto:sustainableTourism rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:sustainableTourism>
+    <jto:pricePerNight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.00</jto:pricePerNight>
+    <jto:offersActivity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaHikingTrail"/>
+    <jto:halalFood rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalFood>
+    <rdfs:label xml:lang="en">Dana Guest House Eco Lodge</rdfs:label>
+    <rdfs:label xml:lang="ar">بيت ضيافة دانا الإيكولوجي</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaHikingTrail">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Activity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaReserve"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hiking</jto:activityType>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:bookingRequired>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5-10 JOD guided, free self-guided</jto:priceRange>
+    <rdfs:label xml:lang="en">Dana Hiking Trail</rdfs:label>
+    <rdfs:label xml:lang="ar">مسار المشي في دانا</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DanaReserve">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NatureReserve"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <rdfs:label xml:lang="en">Dana Biosphere Reserve</rdfs:label>
+    <rdfs:label xml:lang="ar">محمية دانا</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-058: Pet-friendly hotel Amman with parking -->
+  <!-- HolidayInnAmman and CrownePlazaAmman already have petFriendly + ParkingAmenity -->
+
+  <!-- CQ-059: Visitor statistics Jerash -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashVisitorStatsMonday">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisitorStatistics"/>
+    <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashRuinsSite"/>
+    <jto:dayOfWeek rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monday</jto:dayOfWeek>
+    <jto:averageVisitorCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</jto:averageVisitorCount>
+    <rdfs:label xml:lang="en">Jerash Visitor Stats - Monday</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashVisitorStatsFriday">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisitorStatistics"/>
+    <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashRuinsSite"/>
+    <jto:dayOfWeek rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Friday</jto:dayOfWeek>
+    <jto:averageVisitorCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">850</jto:averageVisitorCount>
+    <rdfs:label xml:lang="en">Jerash Visitor Stats - Friday</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashVisitorStatsSaturday">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisitorStatistics"/>
+    <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JerashRuinsSite"/>
+    <jto:dayOfWeek rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Saturday</jto:dayOfWeek>
+    <jto:averageVisitorCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</jto:averageVisitorCount>
+    <rdfs:label xml:lang="en">Jerash Visitor Stats - Saturday</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-060: Jordanian greetings -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanGreetingEtiquette">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#CulturalEtiquette"/>
+    <jto:etiquetteType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">greeting</jto:etiquetteType>
+    <jto:arabicPhrase rdf:datatype="http://www.w3.org/2001/XMLSchema#string">مرحبا / أهلاً وسهلاً / السلام عليكم</jto:arabicPhrase>
+    <jto:usageContext rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Use 'Marhaba' (Hello) casually. 'Ahlan wa sahlan' (Welcome) for formal. 'As-salamu alaykum' (Peace be upon you) in Islamic contexts. Handshakes common with same gender. Bow slightly as sign of respect with elders.</jto:usageContext>
+    <rdfs:label xml:lang="en">Jordanian Greeting Etiquette</rdfs:label>
+    <rdfs:label xml:lang="ar">آداب التحية الأردنية</rdfs:label>
+  </rdf:Description>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       JTO v1.4 — Batch 3 Validation Individuals (CQ-061 to CQ-090)
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- CQ-061: Tour packages Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ClassicJordanPackage7Days">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourPackage"/>
+    <jto:packageDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7 days</jto:packageDuration>
+    <jto:packagePrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">850.00</jto:packagePrice>
+    <jto:includesTransport rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesTransport>
+    <jto:includesAccommodation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesAccommodation>
+    <jto:includesMeals rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesMeals>
+    <jto:offeredBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ExperienceJordanTours"/>
+    <jto:destinationsIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amman, Jerash, Petra, Wadi Rum, Aqaba, Dead Sea</jto:destinationsIncluded>
+    <rdfs:label xml:lang="en">Classic Jordan 7-Day Package</rdfs:label>
+    <rdfs:label xml:lang="ar">باقة الأردن الكلاسيكية 7 أيام</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-062: Tour operator Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ExperienceJordanTours">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourOperator"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:licenseNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JTB-2019-045</jto:licenseNumber>
+    <jto:languages rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English, Arabic, French, German</jto:languages>
+    <jto:rating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.8</jto:rating>
+    <rdfs:label xml:lang="en">Experience Jordan Tours</rdfs:label>
+    <rdfs:label xml:lang="ar">تجربة الأردن للسياحة</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-063: Budget tour package Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BudgetJordanPackage3Days">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourPackage"/>
+    <jto:packageDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3 days</jto:packageDuration>
+    <jto:packagePrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">280.00</jto:packagePrice>
+    <jto:includesTransport rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesTransport>
+    <jto:includesAccommodation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesAccommodation>
+    <jto:includesMeals rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:includesMeals>
+    <jto:offeredBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ExperienceJordanTours"/>
+    <jto:destinationsIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Petra, Wadi Rum</jto:destinationsIncluded>
+    <rdfs:label xml:lang="en">Budget Petra-Wadi Rum 3-Day Package</rdfs:label>
+    <rdfs:label xml:lang="ar">باقة البتراء ووادي رم الاقتصادية 3 أيام</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-065: Visa requirements Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisaRequirementJordanGCC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisaRequirement"/>
+    <jto:forCountry rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <jto:applicableNationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GCC nationals</jto:applicableNationality>
+    <jto:visaRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:visaRequired>
+    <jto:visaNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GCC nationals can enter Jordan without a visa and stay up to 90 days.</jto:visaNote>
+    <rdfs:label xml:lang="en">Visa Requirements - Jordan (GCC)</rdfs:label>
+    <rdfs:label xml:lang="ar">متطلبات التأشيرة - الأردن (دول الخليج)</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisaRequirementJordanEU">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#VisaRequirement"/>
+    <jto:forCountry rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <jto:applicableNationality rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EU and US nationals</jto:applicableNationality>
+    <jto:visaRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:visaRequired>
+    <jto:visaOnArrival rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:visaOnArrival>
+    <jto:visaFee rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.00</jto:visaFee>
+    <jto:visaNote rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visa on arrival available at most entry points. Valid 30 days, single entry. Jordan Pass covers visa fee if visiting 3+ Petra entries.</jto:visaNote>
+    <rdfs:label xml:lang="en">Visa Requirements - Jordan (EU/US)</rdfs:label>
+    <rdfs:label xml:lang="ar">متطلبات التأشيرة - الأردن (الأوروبيون/الأمريكيون)</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-067: Jordan Pass -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanPassTouristCard">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TravelInfo"/>
+    <jto:price rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.00</jto:price>
+    <jto:validityDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</jto:validityDays>
+    <jto:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jordan Pass covers visa fee (for eligible nationalities) + free entry to 40+ attractions including Petra (1, 2 or 3 days). Must be purchased before arrival.</jto:description>
+    <jto:sitesIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Petra, Jerash, Wadi Rum, Ajloun Castle, Umm Qais and 40+ more</jto:sitesIncluded>
+    <rdfs:label xml:lang="en">Jordan Pass Tourist Card</rdfs:label>
+    <rdfs:label xml:lang="ar">بطاقة جواز الأردن السياحية</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-068: Photography rules Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraPhotographyRule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PhotographyRule"/>
+    <jto:forAttraction rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:photographyAllowed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:photographyAllowed>
+    <jto:droneAllowed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:droneAllowed>
+    <jto:restrictions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commercial photography requires permit from Jordan Tourism Board. Drones strictly prohibited. No photography inside the Siq narrow canyon with flash.</jto:restrictions>
+    <rdfs:label xml:lang="en">Petra Photography Rules</rdfs:label>
+    <rdfs:label xml:lang="ar">قواعد التصوير في البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-069: Photography rules mosques -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#MosquePhotographyRule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PhotographyRule"/>
+    <jto:photographyAllowed rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:photographyAllowed>
+    <jto:restrictions rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Photography permitted in courtyards but NOT inside prayer halls during prayer times. Always ask permission before photographing worshippers. Remove shoes at entrance.</jto:restrictions>
+    <rdfs:label xml:lang="en">Mosque Photography Rules - Jordan</rdfs:label>
+    <rdfs:label xml:lang="ar">قواعد التصوير في المساجد - الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-070: Prayer facilities at tourist sites -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraPrayerRoom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PrayerFacility"/>
+    <jto:locatedAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:genderSeparated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:genderSeparated>
+    <jto:prayerFacilityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dedicated prayer room at visitor center</jto:prayerFacilityType>
+    <rdfs:label xml:lang="en">Petra Visitor Center Prayer Room</rdfs:label>
+    <rdfs:label xml:lang="ar">غرفة الصلاة في مركز زوار البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-071: Mosques near Dead Sea -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaMosque">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Mosque"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea"/>
+    <jto:openToNonMuslims rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:openToNonMuslims>
+    <jto:prayerTimes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5 daily prayers — Fajr, Dhuhr, Asr, Maghrib, Isha</jto:prayerTimes>
+    <rdfs:label xml:lang="en">Dead Sea Area Mosque</rdfs:label>
+    <rdfs:label xml:lang="ar">مسجد منطقة البحر الميت</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-072: Budget daily cost Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanBudgetTravelInfo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BudgetInfo"/>
+    <jto:forCountry rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <jto:budgetLevelPerDay rdf:datatype="http://www.w3.org/2001/XMLSchema#string">budget</jto:budgetLevelPerDay>
+    <jto:estimatedDailyMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.00</jto:estimatedDailyMin>
+    <jto:estimatedDailyMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.00</jto:estimatedDailyMax>
+    <jto:budgetNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Budget travellers: hostels 10-20 JOD, local meals 3-8 JOD, public transport 0.5-2 JOD. Main costs are attraction entry fees — Jordan Pass saves money.</jto:budgetNotes>
+    <rdfs:label xml:lang="en">Jordan Budget Travel Information</rdfs:label>
+    <rdfs:label xml:lang="ar">معلومات السفر الاقتصادي في الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-073: Luxury travel Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanLuxuryTravelInfo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#BudgetInfo"/>
+    <jto:forCountry rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <jto:budgetLevelPerDay rdf:datatype="http://www.w3.org/2001/XMLSchema#string">luxury</jto:budgetLevelPerDay>
+    <jto:estimatedDailyMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">200.00</jto:estimatedDailyMin>
+    <jto:estimatedDailyMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">500.00</jto:estimatedDailyMax>
+    <jto:budgetNotes rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Luxury travellers: 5-star hotels 150-400 JOD, private guides 80-150 JOD/day, fine dining 40-100 JOD/meal. Private Wadi Rum camp 200+ JOD.</jto:budgetNotes>
+    <rdfs:label xml:lang="en">Jordan Luxury Travel Information</rdfs:label>
+    <rdfs:label xml:lang="ar">معلومات السفر الفاخر في الأردن</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-075: Children activities Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ChildrenMuseumAmman">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ChildrenActivity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interactive children museum</jto:activityType>
+    <jto:ageRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3-12 years</jto:ageRange>
+    <jto:entryFee rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.00</jto:entryFee>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:bookingRequired>
+    <rdfs:label xml:lang="en">Children's Museum Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">متحف الأطفال - عمان</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AlPashaCookingClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ChildrenActivity"/>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:activityType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">family cooking class</jto:activityType>
+    <jto:ageRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6+ years with family</jto:ageRange>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:bookingRequired>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">25-40 JOD per person</jto:priceRange>
+    <rdfs:label xml:lang="en">Family Jordanian Cooking Class</rdfs:label>
+    <rdfs:label xml:lang="ar">دورة الطبخ الأردني العائلي</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-078: Hiking trails Jordan -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanTrailNorth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HikingTrail"/>
+    <jto:trailName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jordan Trail - Northern Section</jto:trailName>
+    <jto:difficultyLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">moderate to challenging</jto:difficultyLevel>
+    <jto:trailLength rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">650.0</jto:trailLength>
+    <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40 days full trail, day sections available</jto:estimatedDuration>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <rdfs:label xml:lang="en">Jordan Trail - North</rdfs:label>
+    <rdfs:label xml:lang="ar">درب الأردن - الشمال</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiMujibSiqTrail">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HikingTrail"/>
+    <jto:trailName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wadi Mujib Siq Trail</jto:trailName>
+    <jto:difficultyLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">moderate — wading required</jto:difficultyLevel>
+    <jto:trailLength rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</jto:trailLength>
+    <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3-4 hours</jto:estimatedDuration>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:bookingRequired>
+    <jto:bestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">April to October</jto:bestSeason>
+    <rdfs:label xml:lang="en">Wadi Mujib Siq Trail</rdfs:label>
+    <rdfs:label xml:lang="ar">مسار السيق في وادي الموجب</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-080: Petra hiking trails -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraHighPlaceTrail">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HikingTrail"/>
+    <jto:trailName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High Place of Sacrifice Trail</jto:trailName>
+    <jto:difficultyLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">moderate</jto:difficultyLevel>
+    <jto:trailLength rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</jto:trailLength>
+    <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2-3 hours</jto:estimatedDuration>
+    <jto:availableAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:bookingRequired rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jto:bookingRequired>
+    <rdfs:label xml:lang="en">Petra High Place of Sacrifice Trail</rdfs:label>
+    <rdfs:label xml:lang="ar">مسار المكان العالي للذبائح في البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-081: Local guides in Petra -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraLocalGuide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#LocalGuide"/>
+    <jto:guidesAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraSite"/>
+    <jto:languages rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arabic, English</jto:languages>
+    <jto:licenseNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JTB-GUIDE-PETRA-2023</jto:licenseNumber>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40-80 JOD per half-day tour</jto:priceRange>
+    <jto:specialization rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nabataean history, archaeology</jto:specialization>
+    <rdfs:label xml:lang="en">Petra Licensed Local Guide</rdfs:label>
+    <rdfs:label xml:lang="ar">مرشد سياحي محلي معتمد في البتراء</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-083: Local guide Wadi Rum Bedouin -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRumBedouinGuide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#LocalGuide"/>
+    <jto:guidesAt rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#WadiRum"/>
+    <jto:languages rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arabic, English</jto:languages>
+    <jto:priceRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">50-100 JOD per day</jto:priceRange>
+    <jto:specialization rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bedouin culture, desert navigation, stargazing</jto:specialization>
+    <rdfs:label xml:lang="en">Wadi Rum Bedouin Guide</rdfs:label>
+    <rdfs:label xml:lang="ar">مرشد بدوي في وادي رم</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-084: Markets in Amman -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DowntownAmmanSouk">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Market"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:marketType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">traditional souk</jto:marketType>
+    <jto:openingHours rdf:datatype="http://www.w3.org/2001/XMLSchema#string">09:00-21:00, closed Friday afternoon</jto:openingHours>
+    <jto:sells rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanianHandicraft"/>
+    <rdfs:label xml:lang="en">Downtown Amman Souk</rdfs:label>
+    <rdfs:label xml:lang="ar">سوق وسط البلد عمان</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#SweifiyehMall">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Market"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
+    <jto:marketType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">modern shopping mall</jto:marketType>
+    <jto:openingHours rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10:00-22:00 daily</jto:openingHours>
+    <rdfs:label xml:lang="en">Sweifieh Mall Amman</rdfs:label>
+    <rdfs:label xml:lang="ar">مول الصويفية عمان</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-086: Market in Aqaba -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaSouk">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Market"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+    <jto:marketType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">traditional souk + duty free</jto:marketType>
+    <jto:openingHours rdf:datatype="http://www.w3.org/2001/XMLSchema#string">09:00-22:00 daily</jto:openingHours>
+    <rdfs:label xml:lang="en">Aqaba Souk and Market</rdfs:label>
+    <rdfs:label xml:lang="ar">سوق العقبة</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-087-090: Multi-constraint advanced individuals -->
+  <!-- CQ-087: Halal honeymoon package Aqaba -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#HalalHoneymoonPackageAqaba">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourPackage"/>
+    <jto:packageDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5 days</jto:packageDuration>
+    <jto:packagePrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">650.00</jto:packagePrice>
+    <jto:halalCertified rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:halalCertified>
+    <jto:includesTransport rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesTransport>
+    <jto:includesAccommodation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesAccommodation>
+    <jto:includesMeals rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesMeals>
+    <jto:offeredBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#ExperienceJordanTours"/>
+    <jto:destinationsIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aqaba (diving, beach), Wadi Rum (sunset camp)</jto:destinationsIncluded>
+    <rdfs:label xml:lang="en">Halal Honeymoon Package - Aqaba</rdfs:label>
+    <rdfs:label xml:lang="ar">باقة شهر العسل الحلال - العقبة</rdfs:label>
+  </rdf:Description>
+
+  <!-- CQ-088: Accessibility tour package -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AccessibleJordanPackage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#TourPackage"/>
+    <jto:packageDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5 days</jto:packageDuration>
+    <jto:packagePrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">720.00</jto:packagePrice>
+    <jto:isWheelchairAccessible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isWheelchairAccessible>
+    <jto:includesTransport rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesTransport>
+    <jto:includesAccommodation rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:includesAccommodation>
+    <jto:destinationsIncluded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amman (Citadel), Jerash, Dead Sea, Aqaba</jto:destinationsIncluded>
+    <rdfs:label xml:lang="en">Accessible Jordan Package</rdfs:label>
+    <rdfs:label xml:lang="ar">باقة الأردن لذوي الإعاقة</rdfs:label>
+  </rdf:Description>
+
+  <!-- Additional location individuals needed -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#City"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <rdfs:label xml:lang="en">Petra (Wadi Musa)</rdfs:label>
+    <rdfs:label xml:lang="ar">البتراء (وادي موسى)</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DeadSeaArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Location"/>
+    <jto:locatedIn rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#Jordan"/>
+    <rdfs:label xml:lang="en">Dead Sea</rdfs:label>
+    <rdfs:label xml:lang="ar">البحر الميت</rdfs:label>
+  </rdf:Description>
 
 </rdf:RDF>

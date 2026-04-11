@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="jto_tourism_entity_module_v1_3_stable.owl" uri="jto_tourism_entity_module_v1_3_stable.owl"/>
+    <uri id="User Managed RDF/XML files" name="jto_tourism_entity_module_v1_4_stable.owl" uri="jto_tourism_entity_module_v1_4_stable.owl"/>
 </catalog>
