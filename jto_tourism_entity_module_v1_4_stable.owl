@@ -5511,7 +5511,9 @@
     <rdfs:label xml:lang="ar">المدرج الروماني في عمان</rdfs:label>
     <jto:officialName xml:lang="en">Roman Theater Amman</jto:officialName>
     <jto:officialName xml:lang="ar">المدرج الروماني في عمان</jto:officialName>
-  </rdf:Description>
+      <jto:constructionDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2nd century AD (c. 170 CE)</jto:constructionDate>
+    <jto:builtBy rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#RomanDecapolis"/>
+</rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#FiveStarHotel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#LuxuryHotel"/>
@@ -11677,7 +11679,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#DrivingRoute"/>
     <jto:originCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AmmanCity"/>
-    <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#AqabaCity"/>
+    <jto:destinationCity rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#PetraCity"/>
     <jto:drivingDistance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.0</jto:drivingDistance>
     <jto:estimatedDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3 hours via Desert Highway</jto:estimatedDuration>
     <jto:isDirectRoute rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isDirectRoute>
@@ -12013,7 +12015,8 @@
     <jto:sells rdf:resource="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#JordanianHandicraft"/>
     <rdfs:label xml:lang="en">Jordan Craft Center</rdfs:label>
     <rdfs:label xml:lang="ar">مركز الحرف الأردنية</rdfs:label>
-  </rdf:Description>
+      <jto:isAuthentic rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jto:isAuthentic>
+</rdf:Description>
 
   <rdf:Description rdf:about="http://www.semanticweb.org/enadabuzaid/ontologies/2025/11/jordan-tourism#NoorAlHusseynArtCenter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
